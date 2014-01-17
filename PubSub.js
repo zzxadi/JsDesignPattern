@@ -12,7 +12,7 @@ var pubsub = {};
 		var subscribers = topics[topic],
 			len = subscribers ? subscribers.length : 0;
 
-		when( len-- ){
+		while( len-- ){
 			subscribers[len].func(topic, args);
 		}
 
@@ -48,7 +48,7 @@ var pubsub = {};
 
 		return false;
 	}
-}( pubsub || {} ));
+}( pubsub ) );
 
 pubsub.subscibe('example1', function( topics, data ){
 	console.log( topics + " : " + data );
